@@ -1,0 +1,11 @@
+# Independent project repositories live as direct child directories.
+# The root repository only tracks organization-level files.
+/*/
+
+# Keep organization-level directories in the root meta repository.
+!/brand/
+!/docs/
+!/scripts/
+
+# Local system files.
+.DS_Store
