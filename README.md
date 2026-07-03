@@ -9,5 +9,6 @@ Project code lives in separate repositories. The root workspace is kept small so
 ## Contents
 
 - `AGENTS.md` - workspace guidance for agent-assisted work.
+- `docs/naming.md` - project naming vocabulary and guidance.
 - `brand/` - source and exported Sonatelle visual assets.
 - `.gitignore` - root meta-repository ignore rules for independent project directories.
