@@ -38,6 +38,13 @@ Direct project directories are independent repositories unless the user explicit
 - Avoid hype words such as revolutionary, ultimate, fastest, best, or all-in-one unless they are objectively proven and necessary.
 - Do not expose private emotional details in public-facing files without explicit user approval.
 
+### README Opening Style
+
+- Project README openings may use the Sonatelle profile style: restrained, lyrical, and craft-focused.
+- It is acceptable to begin from a musical form, memory, return, patience, or unfinished things becoming work, as long as the emotional origin remains indirect and dignified.
+- When a project name comes from a musical form, explain the name briefly, connect it to the project's temperament, then move quickly into what the software does.
+- Keep introductions short. Do not over-explain private context, and do not let lyrical writing replace clear scope, status, usage, or limitations.
+
 ## Engineering Values
 
 - Favor reliability, safety, clarity, and maintainability over feature breadth.
