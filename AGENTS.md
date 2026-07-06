@@ -52,7 +52,7 @@ Direct project directories are independent repositories unless the user explicit
 For Rust projects under Sonatelle:
 
 - Prefer a Cargo workspace when a project naturally has multiple crates.
-- Prefer `MIT OR Apache-2.0` unless the user chooses another license.
+- Prefer `MIT` unless the user chooses another license.
 - Use `thiserror` or equivalent structured errors for library-facing errors.
 - Use `tracing` for structured diagnostics when logging is needed.
 - Keep unsafe code out unless there is a clear reason, and document every unsafe block.
@@ -75,6 +75,17 @@ For Rust projects under Sonatelle:
 - Before committing, run the relevant checks for the changed project and record what was verified.
 - Before creating any commit, show the proposed commit message to the user and wait for explicit approval of that message.
 - If a direct project directory has its own `AGENTS.md` or `CONTRIBUTING.md`, follow the more specific project-level rules.
+
+### Branch And Merge Discipline
+
+- Keep `main` stable: it should represent work that is ready to run, publish, or build on.
+- Use a short-lived branch for each meaningful change. Prefer one branch per intent, such as one feature, fix, documentation update, or cleanup.
+- Avoid long-running branches. If a branch starts to collect unrelated work, split the work before merging when practical.
+- Before merging, inspect the diff, run the relevant checks, and confirm the branch contains only the intended changes.
+- Treat merge conflicts as design questions, not mechanical chores. Understand both sides of a conflict before resolving it.
+- For solo development, pull requests are optional. Use a pull request when it helps create a clear checkpoint for review, release notes, risky changes, or future memory; do not require one for every small local change.
+- Prefer fast-forward or squash merges for small, focused branches. Use a merge commit only when preserving the branch history is useful.
+- After a branch is merged and no longer needed, delete it to keep the workspace easy to read.
 
 ## Agent Collaboration
 
