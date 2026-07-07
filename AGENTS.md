@@ -89,7 +89,7 @@ For Rust projects under Sonatelle:
 - Do not merge completed work locally into long-lived branches. Push the short-lived branch to GitHub and merge through a pull request, even for solo development.
 - Use GitHub `Rebase and merge` by default. Use `Squash and merge` only when collapsing noisy work-in-progress commits is clearer.
 - Fill out pull request details carefully: what changed, why it changed, how it was verified, and any risks, limitations, or follow-up work. Delete short-lived branches after merge.
-- Long-lived branches may include `main`, `develop`, `release/1.0`, `release/1.1`, and `stable`. Keep them stable for their purpose and do not use them for active feature work.
+- Long-lived branches may include `main`, `develop`, `release/*`, and `stable`. Keep them stable for their purpose and do not use them for active feature work.
 
 ## Agent Collaboration
 
