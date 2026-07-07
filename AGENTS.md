@@ -85,14 +85,11 @@ For Rust projects under Sonatelle:
 
 ### Branch And Merge Discipline
 
-- Keep `main` stable: it should represent work that is ready to run, publish, or build on.
-- Use a short-lived branch for each meaningful change. Prefer one branch per intent, such as one feature, fix, documentation update, or cleanup.
-- Avoid long-running branches. If a branch starts to collect unrelated work, split the work before merging when practical.
-- Before merging, inspect the diff, run the relevant checks, and confirm the branch contains only the intended changes.
-- Treat merge conflicts as design questions, not mechanical chores. Understand both sides of a conflict before resolving it.
-- For solo development, pull requests are optional. Use a pull request when it helps create a clear checkpoint for review, release notes, risky changes, or future memory; do not require one for every small local change.
-- Prefer fast-forward or squash merges for small, focused branches. Use a merge commit only when preserving the branch history is useful.
-- After a branch is merged and no longer needed, delete it to keep the workspace easy to read.
+- Use one short-lived branch for each relatively independent feature, fix, refactor, documentation change, or cleanup. Split unrelated work before opening a pull request.
+- Do not merge completed work locally into long-lived branches. Push the short-lived branch to GitHub and merge through a pull request, even for solo development.
+- Use GitHub `Rebase and merge` by default. Use `Squash and merge` only when collapsing noisy work-in-progress commits is clearer.
+- Fill out pull request details carefully: what changed, why it changed, how it was verified, and any risks, limitations, or follow-up work. Delete short-lived branches after merge.
+- Long-lived branches may include `main`, `develop`, `release/1.0`, `release/1.1`, and `stable`. Keep them stable for their purpose and do not use them for active feature work.
 
 ## Agent Collaboration
 
