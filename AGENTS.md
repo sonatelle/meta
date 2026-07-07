@@ -73,6 +73,63 @@ For Rust projects under Sonatelle:
 - Keep generated assets and source assets clearly separated.
 - Prefer concise comments and docs that explain intent, constraints, and non-obvious choices.
 
+## Comments And Documentation
+
+Comments must be present, purposeful, and free of noise: do not skip them, do not
+under-document public surfaces, and do not restate what the code already says.
+These rules apply to every language, not only Rust.
+
+### What To Comment
+
+- Explain intent, constraints, invariants, and non-obvious tradeoffs — the "why",
+  not a paraphrase of the "what".
+- Give every public API item a doc comment stating what it does, its inputs and
+  outputs, and its notable failure modes.
+- Open every file or module with a one-line statement of its responsibility.
+- In security-sensitive code (path handling, parsers, filesystem, concurrency,
+  unsafe), document the invariant it upholds and the precondition it assumes.
+
+### What Not To Comment
+
+- Do not narrate obvious code (`// increment i`).
+- Do not leave commented-out code; delete it, since history keeps it.
+- Do not leave an unowned `TODO`/`FIXME`; link an issue or drop it.
+- Do not restate the type signature in prose.
+
+### Density
+
+- Match the comment density of the surrounding code.
+- Prefer one clear sentence over a paragraph. If a comment needs a paragraph, the
+  code may need simplifying first.
+- Write comments in English.
+
+### Doc-Comment Form Per Language
+
+Use each language's idiomatic doc-comment form; keep the content rules above
+identical across all of them.
+
+| Language | Item doc comment | Module / file header | Inline note |
+| --- | --- | --- | --- |
+| Rust | `/// ...` | `//! ...` | `// NOTE:`, `// SAFETY:` |
+| Go | `// Foo does ...` (starts with the name) | `// Package foo ...` | `// NOTE:` |
+| TypeScript / JavaScript | `/** ... */` (JSDoc) | top-of-file `/** ... */` | `// NOTE:` |
+| Python | `"""..."""` docstring | module docstring | `# NOTE:` |
+| Shell | `# foo: ...` above the function | shebang plus a `# ...` summary | `# NOTE:` |
+
+### Example
+
+Prefer intent over restatement:
+
+```rust
+// Bad: restates the code.
+// Add one to the retry counter.
+retries += 1;
+
+// Good: explains why.
+// A transient DNS failure is expected on cold start; retry before surfacing it.
+retries += 1;
+```
+
 ## Git Workflow
 
 - Follow `.github/CONTRIBUTING.md` for branch, commit, pull request, and verification conventions.
@@ -90,6 +147,19 @@ For Rust projects under Sonatelle:
 - Use GitHub `Rebase and merge` by default. Use `Squash and merge` only when collapsing noisy work-in-progress commits is clearer.
 - Fill out pull request details carefully: what changed, why it changed, how it was verified, and any risks, limitations, or follow-up work. Delete short-lived branches after merge.
 - Long-lived branches may include `main`, `develop`, `release/*`, and `stable`. Keep them stable for their purpose and do not use them for active feature work.
+
+### Commit Timing
+
+- Commit in small, single-intent increments. Land a coherent unit as soon as it
+  stands on its own and passes its checks, rather than accumulating a large batch.
+- Prefer several small commits over one broad commit. If a change touches unrelated
+  concerns, split it before committing.
+- Scaffold with native tooling (for example `cargo new`, `cargo add`) and then edit,
+  instead of hand-writing generated files.
+- Each commit should build and pass the relevant checks on its own, so history stays
+  bisectable.
+- Keep each self-contained slice to its own pull request; do not let one branch grow
+  into an unreviewable change.
 
 ## Agent Collaboration
 
